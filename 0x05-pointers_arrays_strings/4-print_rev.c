@@ -5,24 +5,19 @@
  * @s: string to reverse
  */
 
-void pirnt_rev(char *s)
+void print_rev(char *s)
 {
-	int len = 0;
 	int i;
 
-	while (*s != '\0')
+	i = 0;
+
+	while (s[i] != '\0')
+		i++;
+	i--;
+	while (i >= 0)
 	{
-		len++;
-		++s;
+		_putchar(s[i]);
+		i--;
 	}
-
-	s--;
-
-	for (i = len; i > 0; i--)
-	{
-		_putchar(*s);
-		s--;
-	}
-
 	_putchar('\n');
 }
