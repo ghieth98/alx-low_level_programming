@@ -30,10 +30,10 @@ void puts_half(char *str)
 	int len = _strlen(str);
 
 	if (len % 2 != 0)
-		idx = (len / 2) +1;
+		idx = (len / 2) + 1;
 	else
 		idx = (len / 2);
-	
+
 	while (idx < len)
 	{
 		_putchar(*(str + idx));
