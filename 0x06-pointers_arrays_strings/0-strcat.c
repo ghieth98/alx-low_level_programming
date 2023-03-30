@@ -3,7 +3,7 @@
 /**
  * _strcat - concatenate two strings
  * @dest: string to be appended to
- * @src: string to appeend
+ * @src: string to append
  * Return: concatenated string
  */
 
