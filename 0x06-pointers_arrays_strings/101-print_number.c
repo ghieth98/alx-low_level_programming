@@ -16,7 +16,7 @@ void print_number(int n)
 	{
 		if (n < 0)
 		{
-			postive = n * -1;
+			positive = n * -1;
 			_putchar('-');
 		}
 
