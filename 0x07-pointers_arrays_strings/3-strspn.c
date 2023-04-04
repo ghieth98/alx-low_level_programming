@@ -3,7 +3,7 @@
 /**
  * _strspn - returns length of string that matches values consistently
  * @s: string to search
- * @accepy: target matches
+ * @accept: target matches
  * Return: number of bytes consecively matched
  */
 
