@@ -1,4 +1,5 @@
 #include "main.h"
+
 /**
  * _strchr - locate 1st occurrence of char in string and returns pointer
  * @s: string to search
