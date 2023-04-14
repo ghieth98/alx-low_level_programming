@@ -1,5 +1,5 @@
-#include "main.h"
 #include <stdlib.h>
+#include "main.h"
 
 /**
  * _realloc - allocate memory and set all values to 0
