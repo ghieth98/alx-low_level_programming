@@ -22,12 +22,12 @@ int main(int argc, char *argv[])
 	if (argv[1][0] == '-')
 	{
 		printf("0\n");
-		return(0);
+		return (0);
 	}
 
 	n = atoi(argv[1]);
 
-	coins += n /25;
+	coins += n / 25;
 	n = n % 25;
 	coins += n / 10;
 	n = n % 10;
