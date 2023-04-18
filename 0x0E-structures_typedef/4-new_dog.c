@@ -1,3 +1,4 @@
+
 #include <stdio.h>
 #include <stdlib.h>
 #include "dog.h"
@@ -7,7 +8,6 @@
  * @str: string
  * Return: length
  */
-
 int len(char *str)
 {
 	int i;
@@ -32,15 +32,13 @@ char *strcpy(char *dest, char *src)
 		dest[i] = src[i];
 	return (dest);
 }
-
 /**
- * new_dog - write a function that creats a new dog
- * @name: name of dog
- * @age: age of dog
- * @owner: owner of dog
- * Return: new dog
+ * new_dog - create new instance of struct dog
+ * @name: member
+ * @age: member
+ * @owner: member
+ * Return: initialized instance of struct dog
  */
-
 dog_t *new_dog(char *name, float age, char *owner)
 {
 	dog_t *dog1;
@@ -48,6 +46,7 @@ dog_t *new_dog(char *name, float age, char *owner)
 	char *copy_of_owner;
 
 	dog1 = malloc(sizeof(dog_t));
+
 	if (dog1 == NULL)
 		return (NULL);
 
