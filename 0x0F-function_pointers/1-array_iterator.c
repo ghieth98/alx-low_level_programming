@@ -1,5 +1,4 @@
 #include <stddef.h>
-#include "funciton_pointers"
 
 /**
  * array_iterator - execute function on array via function ptr
