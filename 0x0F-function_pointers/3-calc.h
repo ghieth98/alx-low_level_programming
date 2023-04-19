@@ -2,6 +2,11 @@
 #define CALC_H
 #include <stdlib.h>
 
+/**
+ * struct op - Struct op
+ * @op: operator
+ * @f: function associated with
+ */
 typedef struct op
 {
 	char *op;
