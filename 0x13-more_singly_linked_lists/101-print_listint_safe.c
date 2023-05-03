@@ -1,10 +1,10 @@
 #include "lists.h"
+
 /**
  * count_nodes_till_loop - count nodes to know now many unique nodes to print
  * @head: pointer to head pointer of linked list
  * Return: number of unique nodes in list before a loop
  */
-
 int count_nodes_till_loop(const listint_t *head)
 {
 	int count = 0;
@@ -12,24 +12,24 @@ int count_nodes_till_loop(const listint_t *head)
 
 	turtle = hare = head;
 
-		while (turtle != NULL && hare != NULL)
-		{
-			turtle = turtle->next;
-			hare = hare->next->next;
-			count++;
+	while (turtle != NULL && hare != NULL)
+	{
+		turtle = turtle->next;
+		hare = hare->next->next;
+		count++;
 
-			if (turtle == hare)
+		if (turtle == hare)
+		{
+			turtle = head;
+			while (turtle != hare)
 			{
-				turtle = head;
-				while (turtle != hare)
-				{
-					turtle = turtle->next;
-					hare = hare->next;
-					count++;
-				}
-				return (count);
+				turtle = turtle->next;
+				hare = hare->next;
+				count++;
 			}
+			return (count);
 		}
+	}
 	return (0);
 }
 
@@ -56,11 +56,10 @@ int loop(const listint_t *head)
 }
 
 /**
- * print_listint_safe - function that prints a listint_t linked list
- * @head: pointer to the beginning of linked lists
- * Return: the number of nodes in the list
+ * print_listint_safe - prints list with addresses
+ * @head: pointer to head pointer of linked list
+ * Return: number of nodes in list, exit(98) if failed
  */
-
 size_t print_listint_safe(const listint_t *head)
 {
 	int count = 0;
@@ -73,7 +72,7 @@ size_t print_listint_safe(const listint_t *head)
 
 	loop_found = loop(head);
 
-	if (loop_found == 1)
+	if (loop_found == 1) /* print upto last node before loop if loop */
 	{
 		count = count_nodes_till_loop(head);
 		for (loop_found = 0; loop_found < count; loop_found++)
@@ -83,7 +82,7 @@ size_t print_listint_safe(const listint_t *head)
 			tmp = tmp->next;
 		}
 	}
-	else if (loop_found == 0)
+	else if (loop_found == 0) /* print regularly upto NULL if no loop */
 	{
 		tmp = head;
 		while (tmp != NULL)
