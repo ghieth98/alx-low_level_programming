@@ -1,97 +1,46 @@
 #include "lists.h"
 
 /**
- * count_nodes_till_loop - count nodes to know now many unique nodes to print
- * @head: pointer to head pointer of linked list
- * Return: number of unique nodes in list before a loop
+ * print_listint_safe - function that prints a listint_t linked list
+ * @head: pointer to the beginning of linked list
+ * Return: the number of nodes in the list
  */
-int count_nodes_till_loop(const listint_t *head)
-{
-	int count = 0;
-	const listint_t *turtle, *hare;
 
-	turtle = hare = head;
-
-	while (turtle != NULL && hare != NULL)
-	{
-		turtle = turtle->next;
-		hare = hare->next->next;
-		count++;
-
-		if (turtle == hare)
-		{
-			turtle = head;
-			while (turtle != hare)
-			{
-				turtle = turtle->next;
-				hare = hare->next;
-				count++;
-			}
-			return (count);
-		}
-	}
-	return (0);
-}
-
-/**
- * loop - find if there's a loop in linked list
- * @head: pointer to head pointer of linked list
- * Return: 0 if no loop, 1 if loop
- */
-int loop(const listint_t *head)
-{
-	const listint_t *turtle, *hare;
-
-	turtle = hare = head;
-
-	while (turtle != NULL && hare != NULL)
-	{
-		turtle = turtle->next;
-		hare = hare->next->next;
-
-		if (turtle == hare)
-			return (1);
-	}
-	return (0);
-}
-
-/**
- * print_listint_safe - prints list with addresses
- * @head: pointer to head pointer of linked list
- * Return: number of nodes in list, exit(98) if failed
- */
 size_t print_listint_safe(const listint_t *head)
 {
-	int count = 0;
-	int loop_found;
-	size_t num_nodes = 0;
-	const listint_t *tmp;
+	int i, flag = 0;
+	listint_t *slow, *fast;
 
-	if (head == NULL)
+	if (!head)
 		exit(98);
-
-	loop_found = loop(head);
-
-	if (loop_found == 1) /* print upto last node before loop if loop */
+	for (i = 1; (*head).next && !flag; head = (*head).next, i++)
 	{
-		count = count_nodes_till_loop(head);
-		for (loop_found = 0; loop_found < count; loop_found++)
+		if ((*head).next)
+			slow = (*head).next;
+		if ((*head).next->next)
+			fast = (*head).next->next;
+		while (slow != fast)
 		{
-			printf("[%p] %d\n", (void *)tmp, tmp->n);
-			num_nodes += 1;
-			tmp = tmp->next;
+			if (slow)
+				slow = (*slow).next;
+			if (fast == head)
+				flag = 1;
+			if (fast && !flag)
+				fast = (*fast).next;
+			if (fast == head)
+				flag = 1;
+			if (fast && !flag)
+				fast = (*fast).next;
+			if (fast == head)
+				flag = 1;
 		}
-	}
-	else if (loop_found == 0) /* print regularly upto NULL if no loop */
-	{
-		tmp = head;
-		while (tmp != NULL)
-		{
-			printf("[%p] %d\n", (void *)tmp, tmp->n);
-			num_nodes += 1;
-			tmp = tmp->next;
-		}
+		printf("[%p] %d\n", (void *)head, (*head).n);
 	}
 
-	return (num_nodes);
+	for (; flag && (*head).next != fast; i++, head = (*head).next)
+		printf("[%p] %d\n", (void *)head, (*head).n);
+	printf("[%p] %d\n", (void *)head, (*head).n);
+	if (fast)
+		printf("-> [%p] %d\n", (void *)fast, (*fast).n);
+	return (i);
 }
