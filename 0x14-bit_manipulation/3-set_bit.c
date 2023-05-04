@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * set bit - set bit to 1 at given index
+ * set_bit - set bit to 1 at given index
  * @n: number
  * @index: index within binary number
  * Return:1 if success, or -1 if error
