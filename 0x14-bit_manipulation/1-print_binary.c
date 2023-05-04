@@ -1,14 +1,13 @@
 #include "main.h"
 #include <stdio.h>
-
 /**
- * print_binary - converts unsigned int to binary\
- * @n: unsinged int
+ * print_binary - converts unsigned int to binary
+ * @n: unsigned int
  * Return: binary
  */
-
 void print_binary(unsigned long int n)
 {
+
 	unsigned long int n_copy = n, mask = 1;
 	int len = 0;
 
