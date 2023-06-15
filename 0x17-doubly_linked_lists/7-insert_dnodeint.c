@@ -5,9 +5,9 @@
  * @h: double pointer to the head of the list
  * @idx: index of the list where the new node should be added
  * @n: value to be assigned to the new node
- * Return: addres to the new node
+ *
+ * Return: address of the new node, or NULL on failure
  */
-
 dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 {
 	dlistint_t *new_node, *temp = *h;
@@ -22,7 +22,7 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 	if (idx == 0)
 		return (add_dnodeint(h, n));
 
-	for (i = 0, i < idx - 1 && temp != NULL; i++)
+	for (i = 0; i < idx - 1 && temp != NULL; i++)
 		temp = temp->next;
 
 	if (temp == NULL)
