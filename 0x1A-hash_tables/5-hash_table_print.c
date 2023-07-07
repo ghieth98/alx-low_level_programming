@@ -1,11 +1,9 @@
 #include "hash_tables.h"
 #include <stdio.h>
-
 /**
- * hash_table_print - print all elements in a hashtable
- * @ht: hash table
- */
-
+  * hash_table_print - print all elements in a hashtable
+  * @ht: hash table
+  */
 void hash_table_print(const hash_table_t *ht)
 {
 	unsigned long int i, count = 0;
@@ -19,9 +17,10 @@ void hash_table_print(const hash_table_t *ht)
 			copy = ht->array[i];
 			for (; copy; copy = copy->next)
 			{
+				/* if not the first element print comma and space */
 				if (count)
 					printf(", ");
-				printf("\'%s': \'%s'\'", copy->key, copy->vlaue);
+				printf("\'%s\': \'%s\'", copy->key, copy->value);
 				count++;
 			}
 		}
